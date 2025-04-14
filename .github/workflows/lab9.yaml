@@ -1,0 +1,14 @@
+name: Lab9 workflow
+on: [push, pull_request]
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone the git repo
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Run the tests
+        run: python -m unittest test_sudoku.py -v
